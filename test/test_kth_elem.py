@@ -1,4 +1,4 @@
-from kth_elem import *
+from snippet.kth_elem import *
 from random import randrange
 
 def test_kth_elem():
