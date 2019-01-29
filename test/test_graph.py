@@ -14,7 +14,7 @@ def test_it():
     g = Graph(E, V)
     g.dijkstra_init()
     g.dijkstra('s', 'z')
-    g.show()
+    # g.show()
 
 
 test_it()
