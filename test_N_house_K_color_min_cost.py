@@ -11,6 +11,8 @@ def k_smallest(X, k):
     return res[:-1]
 
 def N_house_K_color_min_cost(price_list):
+    N = len(price_list)
+    K = len(price_list[0])
     lowest_price_list = [[None for _ in range(K)] for _ in range(N)]
     lowest_price_list[0] = price_list[0]
     for i in range(1, N):
@@ -24,21 +26,13 @@ def N_house_K_color_min_cost(price_list):
     return min(lowest_price_list[-1])
 
 
-if __name__ == '__main__':
-    # for _ in range(100):
-    K = 4
-    N = 4
-    # price_list = [[randint(1, 10) for _ in range(K)] for _ in range(N)]
+def test_N_house_K_color():
     price_list = [
         [3, 10, 2, 4],
         [6, 10, 10, 6],
         [3, 5, 4, 8],
         [2, 9, 6, 3],
     ]
-    for row in price_list:
-        print(row)
-
     res1 = N_house_K_color_min_cost(price_list)
     assert res1 == 13
-    print(res1)
 
