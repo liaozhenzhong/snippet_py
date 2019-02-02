@@ -189,6 +189,19 @@ class Graph(object):
                 if new_degree > self.V[v].degree:
                     self.V[v].degree = new_degree
                     self.V[v].prev = u
-        path = self.show_path(order[0], order[-1])
+
+        longest_paths = []
+        used_node = set()
+        self.dfs_init()
+        for n in order:
+            if n in used_node:
+                continue
+            path = []
+            for i in self.dfs(n):
+                path.append(i.key)
+                used_node.add(i.key)
+            if len(path) > len(longest_paths):
+                longest_paths = list(path)
+        path = self.show_path(longest_paths[0], longest_paths[-1])
         path.reverse()
         return path
