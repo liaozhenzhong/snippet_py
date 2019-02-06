@@ -26,14 +26,6 @@ def test_nesting_2():
     assert Solution().arrayNesting(A) == Z
 
 
-def test_nesting_3():
-    with open('1.txt') as f:
-        A = f.readline().split(',')
-        A = [int(i) for i in A]
-    Z = 2
-    print(Solution().arrayNesting(A))
-
-
 def test_nesting_4():
     A = []
     Z = 0
