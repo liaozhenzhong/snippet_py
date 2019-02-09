@@ -23,15 +23,18 @@ def test_count_it():
     c = '2A4B3C5D1E'
     assert(Solution().count_it(s) == c)
 
+
 def test_count_it_2():
     s = 'A'
     c = '1A'
     assert(Solution().count_it(s) == c)
 
+
 def test_count_it_3():
     s = ''
     c = ''
     assert(Solution().count_it(s) == c)
+
 
 def test_count_it_4():
     s = 'ABAB'

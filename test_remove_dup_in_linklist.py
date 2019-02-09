@@ -4,6 +4,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
     def deleteDuplicates(self, head):
         root = ListNode(None)
@@ -41,6 +42,7 @@ def test_remove_dup():
         head = new_node
     assert(Solution().deleteDuplicates(head) == [1, 2, 5])
 
+
 def test_remove_dup_at_front():
     head = ListNode(3)
     for i in reversed([1, 1, 1, 1, 1, 2]):
@@ -48,6 +50,7 @@ def test_remove_dup_at_front():
         new_node.next = head
         head = new_node
     assert(Solution().deleteDuplicates(head) == [2, 3])
+
 
 def test_remove_dup_at_end():
     head = ListNode(3)

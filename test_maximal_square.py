@@ -13,8 +13,8 @@ class Solution:
             for j in range(W):
                 matrix[i][j] = 0 if matrix[i][j] == "0" else 1
 
-        up_spaces = [[0]*W for _ in range(H)]
-        left_spaces = [[0]*W for _ in range(H)]
+        up_spaces = [[0] * W for _ in range(H)]
+        left_spaces = [[0] * W for _ in range(H)]
         square_len = [[0] * W for _ in range(H)]
 
         for i in range(H):

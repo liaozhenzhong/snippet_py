@@ -32,10 +32,12 @@ def test_min_del_size_2():
     res = Solution().minDeletionSize(X)
     assert res == 0
 
+
 def test_min_del_size_3():
-    X = ["zyx","wvu","tsr"]
+    X = ["zyx", "wvu", "tsr"]
     res = Solution().minDeletionSize(X)
     assert res == 3
+
 
 def test_min_del_size_4():
     X = []
