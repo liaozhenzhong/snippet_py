@@ -1,33 +1,3 @@
-# def index(self, length, i):
-#     if i < 0:
-#         return i + length
-#     elif i >= length:
-#         return i - length
-#     else:
-#         return i
-
-# def findMin(self, nums: 'List[int]') -> 'int':
-#     num_len = len(nums)
-#     if num_len == 0:
-#         return None
-#     elif num_len == 1:
-#         return nums[0]
-#     elif num_len == 2:
-#         return min(nums)
-
-#     steps = num_len//2
-#     i = 0
-#     while True:
-#         i1 = self.index(num_len, i)
-#         i2 = self.index(num_len, i+1)
-#         if nums[i1] > nums[i2]:
-#             return nums[i2]
-#         else:
-#             i -= max(steps, 1)
-#             print(i, steps)
-#             steps = steps // 2
-
-
 class Solution:
     def findMin(self, nums: 'List[int]') -> 'int':
         if not nums:
@@ -36,7 +6,7 @@ class Solution:
         r = len(nums) - 1
         while True:
             m = (l + r) // 2
-            print(l, m, r)
+            # print(l, m, r)
             if nums[m] > nums[l] and nums[l] > nums[r]:
                 l = m
                 continue

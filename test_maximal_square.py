@@ -9,10 +9,6 @@ class Solution:
         H = len(matrix)
         W = len(matrix[0])
 
-        for i in range(H):
-            for j in range(W):
-                matrix[i][j] = 0 if matrix[i][j] == "0" else 1
-
         up_spaces = [[0] * W for _ in range(H)]
         left_spaces = [[0] * W for _ in range(H)]
         square_len = [[0] * W for _ in range(H)]
@@ -101,11 +97,3 @@ def test_square7():
     ]
     res = Solution().maximalSquare(x)
     assert res == 0
-
-
-def test_square8():
-    x = [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], [
-        "1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]
-
-    res = Solution().maximalSquare(x)
-    assert res == 4

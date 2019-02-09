@@ -38,15 +38,3 @@ class DirTree(object):
         paths = longpath.split('\n')
         for path in paths:
             self.add_item(path)
-
-
-d = DirTree()
-# d.add_item('root')
-# d.add_item('\thello')
-# d.add_item('\tworld')
-# d.add_item('root2')
-# d.add_item('\thello2')
-# d.add_item('\tworld2')
-d.parse_path(
-    'dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext')
-d.show()
