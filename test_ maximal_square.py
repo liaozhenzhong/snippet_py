@@ -1,38 +1,41 @@
+import copy
+
+
 class Solution:
-    def maximalSquare(self, matrix: 'List[List[str]]') -> 'int':
+    def maximalSquare(self, matrix):
         if not matrix or not matrix[0]:
             return 0
-
-        if not any([any(i) for i in matrix]):
-            return 0
-
         H = len(matrix)
         W = len(matrix[0])
 
-        for i in range(H):
-            for j in range(W):
-                matrix[i][j] = 0 if matrix[i][j] == "0" else 1
+        # for i in range(H):
+        #     for j in range(W):
+        #         matrix[i][j] = 0 if matrix[i][j] == '0' else 1
 
-        up_spaces = [[0]*W for _ in range(H)]
-        left_spaces = [[0]*W for _ in range(H)]
-        square_len = [[0] * W for _ in range(H)]
+        up = copy.deepcopy(matrix)
+        left = copy.deepcopy(matrix)
+        square = copy.deepcopy(matrix)
 
-        for i in range(H):
+        for i in range(1, H):
             for j in range(W):
                 if matrix[i][j] == 0:
                     continue
-                up_spaces[i][j] = up_spaces[i - 1][j] + 1
-                left_spaces[i][j] = left_spaces[i][j - 1] + 1
-                square_len[i][j] = 1
+                up[i][j] = up[i-1][j] + 1
+
+        for i in range(H):
+            for j in range(1, W):
+                if matrix[i][j] == 0:
+                    continue
+                left[i][j] = left[i][j-1] + 1
 
         for i in range(1, H):
             for j in range(1, W):
                 if matrix[i][j] == 0:
                     continue
-                square_len[i][j] = min(
-                    square_len[i - 1][j - 1], up_spaces[i - 1][j], left_spaces[i][j - 1]) + 1
+                square[i][j] = min(square[i-1][j-1],
+                                   up[i-1][j], left[i][j-1]) + 1
 
-        return max([max(i) for i in square_len])
+        return max([max(i) for i in square])**2
 
 
 def test_square():
@@ -43,7 +46,7 @@ def test_square():
         [1, 0, 0, 1, 0],
     ]
     res = Solution().maximalSquare(x)
-    assert res == 2
+    assert res == 4
 
 
 def test_square2():
@@ -65,7 +68,7 @@ def test_square3():
         [1, 0, 1, 1, 0],
     ]
     res = Solution().maximalSquare(x)
-    assert res == 2
+    assert res == 4
 
 
 def test_square4():
@@ -76,7 +79,7 @@ def test_square4():
         [1, 0, 1, 1, 1],
     ]
     res = Solution().maximalSquare(x)
-    assert res == 3
+    assert res == 9
 
 
 def test_square5():
@@ -101,11 +104,3 @@ def test_square7():
     ]
     res = Solution().maximalSquare(x)
     assert res == 0
-
-
-def test_square8():
-    x = [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], [
-        "1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]
-
-    res = Solution().maximalSquare(x)
-    assert res == 4

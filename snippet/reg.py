@@ -1,30 +1,10 @@
-def match(a, b):
-    i = j = 0
-    while i < len(a) and j < len(b):
-        if j + 1 < len(b) and b[j+1] == '*':
-            if b[j] == '*':
-                return False
-            elif b[j] == '.':
-                for k in reversed(range(i, len(a))):
-                    if match(a[k:], b[j+2:]):
-                        return True
-                return False
-            else:
-                while i < len(a) and a[i] == b[j]:
-                    i += 1
-                j += 2
-        else:
-            if b[j] == '*':
-                return False
-            elif b[j] == '.':
-                i += 1
-                j += 1
-            else:
-                if a[i] == b[j]:
-                    i += 1
-                    j += 1
-                else:
-                    return False
-    if i != len(a) or j != len(b):
-        return False
-    return True
+def match(text, pattern):
+    if not pattern:
+        return not text
+
+    first_match = bool(text) and pattern[0] in {text[0], '.'}
+
+    if len(pattern) >= 2 and pattern[1] == '*':
+        return (match(text, pattern[2:]) or first_match and match(text[1:], pattern))
+    else:
+        return first_match and match(text[1:], pattern[1:])
