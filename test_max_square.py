@@ -9,16 +9,17 @@ class Solution:
         """
         if not matrix:
             return 0
-        res=[[0 for i in range(len(matrix[0]))] for j in range(len(matrix))]
+        res = [[0 for i in range(len(matrix[0]))] for j in range(len(matrix))]
         for i in range(len(matrix)):
-            res[i][0]=int(matrix[i][0])
+            res[i][0] = int(matrix[i][0])
         for j in range(len(matrix[0])):
-            res[0][j]=int(matrix[0][j])
-        
-        for i in range(1,len(matrix)):
-            for j in range(1,len(matrix[0])):
-                res[i][j]=1+min(res[i-1][j],res[i][j-1],res[i-1][j-1]) if matrix[i][j]=="1" else 0
-        return max(map(max,res))**2
+            res[0][j] = int(matrix[0][j])
+
+        for i in range(1, len(matrix)):
+            for j in range(1, len(matrix[0])):
+                res[i][j] = 1 + min(res[i - 1][j], res[i][j - 1],
+                                    res[i - 1][j - 1]) if matrix[i][j] == "1" else 0
+        return max(map(max, res))**2
 
     def maximalSquare3(self, matrix):
         if not matrix or not matrix[0]:
@@ -38,20 +39,20 @@ class Solution:
             for j in range(W):
                 if matrix[i][j] == 0:
                     continue
-                up[i][j] = up[i-1][j] + 1
+                up[i][j] = up[i - 1][j] + 1
 
         for i in range(H):
             for j in range(1, W):
                 if matrix[i][j] == 0:
                     continue
-                left[i][j] = left[i][j-1] + 1
+                left[i][j] = left[i][j - 1] + 1
 
         for i in range(1, H):
             for j in range(1, W):
                 if matrix[i][j] == 0:
                     continue
-                square[i][j] = min(square[i-1][j-1],
-                                   up[i-1][j], left[i][j-1]) + 1
+                square[i][j] = min(square[i - 1][j - 1],
+                                   up[i - 1][j], left[i][j - 1]) + 1
 
         return max([max(i) for i in square])**2
 
@@ -82,12 +83,12 @@ class Solution:
                 if matrix[i][j] == 0:
                     continue
                 if i > 0:
-                    info[i][j][0] = info[i-1][j][0] + 1
+                    info[i][j][0] = info[i - 1][j][0] + 1
                 if j > 0:
-                    info[i][j][1] = info[i][j-1][1] + 1
+                    info[i][j][1] = info[i][j - 1][1] + 1
                 if i > 0 and j > 0:
-                    info[i][j][2] = min(info[i-1][j-1][2],
-                                        info[i-1][j][0], info[i][j-1][1]) + 1
+                    info[i][j][2] = min(info[i - 1][j - 1][2],
+                                        info[i - 1][j][0], info[i][j - 1][1]) + 1
                     if info[i][j][2] > largest:
                         largest = info[i][j][2]
 

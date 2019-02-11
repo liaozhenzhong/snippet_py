@@ -1,5 +1,6 @@
 class Solution:
-    def uniquePathsWithObstacles(self, obstacleGrid: 'List[List[int]]') -> 'int':
+    def uniquePathsWithObstacles(
+            self, obstacleGrid: 'List[List[int]]') -> 'int':
         if not obstacleGrid or not obstacleGrid[0]:
             return 0
 

@@ -8,10 +8,6 @@ class Solution:
         H = len(matrix)
         W = len(matrix[0])
 
-        # for i in range(H):
-        #     for j in range(W):
-        #         matrix[i][j] = 0 if matrix[i][j] == '0' else 1
-
         up = copy.deepcopy(matrix)
         left = copy.deepcopy(matrix)
         square = copy.deepcopy(matrix)

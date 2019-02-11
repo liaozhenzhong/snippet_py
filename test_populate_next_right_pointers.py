@@ -6,15 +6,15 @@
 #         self.right = None
 #         self.next = None
 
+from collections import deque
+
+
 class TreeLinkNode(object):
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
         self.next = None
-
-
-from collections import deque
 
 
 class Solution:
